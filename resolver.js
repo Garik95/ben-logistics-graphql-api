@@ -1,10 +1,8 @@
-const models = require('./models/student')
+const models = require('./models')
 var ObjectId = require('mongodb').ObjectID;
 
 const resolvers = {
-  users: async (args) =>{
-      return (await models.User.find())
-  },
+  // example for lookup aggregation 
   user: async (args) => {
       // return (await models.User.find({"username":args.username}))
       return (await models.User.aggregate([
@@ -19,25 +17,14 @@ const resolvers = {
       }])
       )
   },
-  covers: async (args) => {
-    return (await models.Cover.find())
+  
+  members: async (args) => {
+    return (await models.Member.find())
   },
-  card: async (args) => {
-    return (await models.Card.find({"account":args.account}))
-  },
-  cards: async (args) => {
-    return (await models.Card.aggregate([
-      {$match:{"userid": ObjectId(args.userid)}},
-      {
-      $lookup:{
-              from: "users",
-              localField: "userid",
-              foreignField: "_id",
-              as: "users"
-          }
-  }])
-  )
+  member: async (args) => {
+    return (await models.Member.find({"id":args.id}))
   }
+
 //   addBook: async (args, context) => {
 //     var newBook = new Book({
 //       title: args.title,

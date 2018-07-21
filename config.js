@@ -1,5 +1,5 @@
 module.exports = {
-  dbURL: 'mongodb://vueuser:Aa123456@ds129821.mlab.com:29821',
-  dbName: 'vue-db',
+  dbURL: 'mongodb://loguser:Aa123456@ds145121.mlab.com:45121',
+  dbName: 'ben-logistics',
   collectionName: 'students' // optional option
 }
