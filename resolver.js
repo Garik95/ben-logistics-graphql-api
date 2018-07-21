@@ -3,26 +3,32 @@ var ObjectId = require('mongodb').ObjectID;
 
 const resolvers = {
   // example for lookup aggregation 
-  user: async (args) => {
-      // return (await models.User.find({"username":args.username}))
-      return (await models.User.aggregate([
-        {$match:{"username":args.username}},
-        {
-        $lookup:{
-                from: "cards",
-                localField: "_id",
-                foreignField: "userid",
-                as: "cards"
-            }
-      }])
-      )
-  },
-  
+  // user: async (args) => {
+  //     // return (await models.User.find({"username":args.username}))
+  //     return (await models.User.aggregate([
+  //       {$match:{"username":args.username}},
+  //       {
+  //       $lookup:{
+  //               from: "cards",
+  //               localField: "_id",
+  //               foreignField: "userid",
+  //               as: "cards"
+  //           }
+  //     }])
+  //     )
+  // },
+
   members: async (args) => {
     return (await models.Member.find())
   },
   member: async (args) => {
     return (await models.Member.find({"id":args.id}))
+  },
+  users: async (args) => {
+    return (await models.Users.find())
+  },
+  user: async (args) => {
+    return (await models.Users.find({"user.id": args.id}))
   }
 
 //   addBook: async (args, context) => {
