@@ -47,6 +47,11 @@ module.exports = new buildSchema(`
       addUser(date:Int): Users!
     }
 
+    schema {
+      query: Query
+      mutation: Mutation
+    }
+
   `)
     //   type Mutation {
     //     addBook(title: String!, author: String!): Book!
