@@ -34,6 +34,12 @@ const resolvers = {
 
     if (err) console.log(err)
     return newUser
+  },
+  addTrailer: async (args) => {
+    var newTrailer = new Trailer({
+      trailerid:  args.id,
+      state:      args.state
+    })
   }
 
 //   addBook: async (args, context) => {

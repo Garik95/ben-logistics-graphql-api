@@ -44,12 +44,8 @@ module.exports = new buildSchema(`
     }
 
     type Mutation {
-      addUser(date:Int): Users!
-    }
-
-    schema {
-      query: Query
-      mutation: Mutation
+      addUser(date:Int): Users!,
+      addTrailer(id:String!,state:String!): Trailer
     }
 
   `)
