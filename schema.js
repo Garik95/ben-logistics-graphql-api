@@ -44,7 +44,7 @@ module.exports = new buildSchema(`
     }
 
     type Mutation {
-      addUser(date:Int): Users
+      addUser(date:Int): Users!
     }
 
   `)

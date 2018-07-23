@@ -32,7 +32,7 @@ const resolvers = {
 
     var err = await newUser.save()
 
-    if (err) return err
+    if (err) console.log(err)
     return newUser
   }
 
