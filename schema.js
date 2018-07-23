@@ -34,6 +34,10 @@ module.exports = new buildSchema(`
       trailer(id:String!): [Trailer]
     }
 
+    type Mutation {
+      addUser(id:Int!,is_bot:String,first_name:String,last_name:String,username:String,language_code:String,date:Int): [Users]
+    }
+
   `)
     //   type Mutation {
     //     addBook(title: String!, author: String!): Book!

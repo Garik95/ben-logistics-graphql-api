@@ -17,6 +17,22 @@ const resolvers = {
   },
   trailer: async (args) => {
     return (await models.Trailer.find({"trailerid": args.id}))
+  },
+  addUser: async (args) => {
+    var newUser = new Users({
+      "user.id":            args.id,
+      "user.is_bot":        args.is_bot,
+      "user.first_name":    args.first_name,
+      "user.last_name":     args.last_name,
+      "user.username":      args.username,
+      "user.language_code": args.language_code,
+      "date":               args.date 
+    })
+
+    var err = await newUser.save()
+
+    if (err) return err
+    return newUser
   }
 
 //   addBook: async (args, context) => {
