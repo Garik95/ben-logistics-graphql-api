@@ -24,10 +24,17 @@ const usersSchema = mongoose.Schema({
     date: Number
 });
 
-
 let Users = mongoose.model('users',usersSchema);
+
+const trailerSchema = mongoose.Schema({
+    trailerid:  String,
+    state:      String
+});
+
+let Trailer = mongoose.model('trailers',trailerSchema);
 
 module.exports = {
     Member:Member,
-    Users:Users
+    Users:Users,
+    Trailer:Trailer
 }

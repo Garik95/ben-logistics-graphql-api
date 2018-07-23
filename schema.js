@@ -21,11 +21,17 @@ module.exports = new buildSchema(`
       language_code: String
     }
 
+    type Trailer{
+      trailerid:String!,
+      state: String!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
       users: [Users],
-      user(id:Int!): [Users]
+      user(id:Int!): [Users],
+      trailer(id:String!): [Trailer]
     }
 
   `)

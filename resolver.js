@@ -2,21 +2,6 @@ const models = require('./models')
 var ObjectId = require('mongodb').ObjectID;
 
 const resolvers = {
-  // example for lookup aggregation 
-  // user: async (args) => {
-  //     // return (await models.User.find({"username":args.username}))
-  //     return (await models.User.aggregate([
-  //       {$match:{"username":args.username}},
-  //       {
-  //       $lookup:{
-  //               from: "cards",
-  //               localField: "_id",
-  //               foreignField: "userid",
-  //               as: "cards"
-  //           }
-  //     }])
-  //     )
-  // },
 
   members: async (args) => {
     return (await models.Member.find())
@@ -29,6 +14,9 @@ const resolvers = {
   },
   user: async (args) => {
     return (await models.Users.find({"user.id": args.id}))
+  },
+  trailer: async (args) => {
+    return (await models.Trailer.find({"trailerid": args.id}))
   }
 
 //   addBook: async (args, context) => {
