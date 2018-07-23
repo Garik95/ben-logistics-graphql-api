@@ -40,6 +40,7 @@ const resolvers = {
       trailerid:  args.id,
       state:      args.state
     })
+    console.log(newTrailer.save())
   }
 
 //   addBook: async (args, context) => {
