@@ -19,6 +19,7 @@ const resolvers = {
     return (await models.Trailer.find({"trailerid": args.id}))
   },
   addUser: async (args) => {
+    console.log(args);
     var newUser = new Users({
       "user.id":            args.id,
       "user.is_bot":        args.is_bot,
