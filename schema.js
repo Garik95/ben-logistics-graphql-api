@@ -35,7 +35,7 @@ module.exports = new buildSchema(`
     }
 
     type Mutation {
-      addUser(id:Int!,is_bot:String,first_name:String,last_name:String,username:String,language_code:String,date:Int): [Users]
+      addUser(id:Int!,is_bot:String,first_name:String,last_name:String,username:String,language_code:String,date:Int): Users
     }
 
   `)
