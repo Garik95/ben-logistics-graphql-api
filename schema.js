@@ -34,8 +34,17 @@ module.exports = new buildSchema(`
       trailer(id:String!): [Trailer]
     }
 
+    input UserInput {
+      id: Int!,
+      is_bot: String,
+      first_name: String,
+      last_name: String,
+      username: String,
+      language_code: String
+    }
+
     type Mutation {
-      addUser(id:Int!,is_bot:String,first_name:String,last_name:String,username:String,language_code:String,date:Int): Users
+      addUser(user:UserInput, date:Int): Users
     }
 
   `)
