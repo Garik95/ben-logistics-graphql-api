@@ -24,12 +24,9 @@ const resolvers = {
   changeLoc: async (args) => {
     return (await models.Users.findOneAndUpdate(
       {"user.id":args.id},
-      {$set:{"location":"asd"}}
+      {$set:{"location":args.location}}
     ))
-    // console(userLoc);
-    // return userLoc
   },
-
   addUser: async (args) => {
     console.log(args);
     var newUser = new Users({
