@@ -22,11 +22,10 @@ const resolvers = {
 
   // mutations resolvers
   changeLoc: async (args) => {
-    return (await models.Users.find({"user.id":args.id}, function(err, user){
-      user.location = 'asd';
-      user.save();
-      console.log(user);
-    }))
+    return (await models.Users.findOneAndUpdate(
+      {"user.id":args.id},
+      {$set:{"location":"asd"}}
+    ))
     // console(userLoc);
     // return userLoc
   },
