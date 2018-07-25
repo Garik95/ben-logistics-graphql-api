@@ -34,8 +34,20 @@ const trailerSchema = mongoose.Schema({
 
 let Trailer = mongoose.model('trailers',trailerSchema);
 
+const reserveSchema = mongoose.Schema({
+    trailerid:      String,
+    reserved:       Date,
+    lat:            String,
+    long:           String,
+    time:           String,
+    truckid:        String
+});
+
+let Reserve = mongoose.model('reserves',reserveSchema);
+
 module.exports = {
     Member:Member,
     Users:Users,
-    Trailer:Trailer
+    Trailer:Trailer,
+    Reserve:Reserve
 }

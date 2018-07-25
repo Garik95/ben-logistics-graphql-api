@@ -5,19 +5,25 @@ const resolvers = {
   // query resolvers
   
   members: async (args) => {
-    return (await models.Member.find())
+    return (await models.Member.find({}))
   },
   member: async (args) => {
     return (await models.Member.find({"id":args.id}))
   },
   users: async (args) => {
-    return (await models.Users.find())
+    return (await models.Users.find({}))
   },
   user: async (args) => {
     return (await models.Users.find({"user.id": args.id}))
   },
   trailer: async (args) => {
     return (await models.Trailer.find({"trailerid": args.id}))
+  },
+  reserves: async (args) => {
+    return (await models.Reserve.find({}))
+  },
+  reserve: async (args) => {
+    return (await models.Reserve.find({"trailerid":args.id}).sort({"reserved":-1}).limit(1))
   },
 
   // mutations resolvers

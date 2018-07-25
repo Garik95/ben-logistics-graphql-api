@@ -36,12 +36,23 @@ module.exports = new buildSchema(`
       state: String!
     }
 
+    type Reserve{
+      trailerid: String!,
+      reserved: String,
+      lat: String,
+      long:String,
+      time:String,
+      truckid:String
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
       users: [Users],
       user(id:Int!): [Users],
-      trailer(id:String!): [Trailer]
+      trailer(id:String!): [Trailer],
+      reserves: [Reserve],
+      reserve(id:String): [Reserve]
     }
 
     type Mutation {
