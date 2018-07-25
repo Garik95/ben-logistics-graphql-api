@@ -9,7 +9,8 @@ module.exports = new buildSchema(`
     type Users{
       _id: [String],
       user: [User],
-      date: Int
+      date: Int,
+      location: String
     }
 
     type User{
@@ -45,7 +46,8 @@ module.exports = new buildSchema(`
 
     type Mutation {
       addUser(date:Int): Users!,
-      addTrailer(id:String!,state:String!): Trailer!
+      addTrailer(id:String!,state:String!): Trailer!,
+      userLoc(id:Int!): Users!
     }
     
 

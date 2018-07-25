@@ -19,9 +19,10 @@ const userSchema = mongoose.Schema({
 });
 
 const usersSchema = mongoose.Schema({
-    _id: Array,
-    user: [userSchema],
-    date: Number
+    _id:        Array,
+    user:       [userSchema],
+    date:       Number,
+    location:   String
 });
 
 let Users = mongoose.model('users',usersSchema);

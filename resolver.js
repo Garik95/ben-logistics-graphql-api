@@ -2,7 +2,8 @@ const models = require('./models')
 var ObjectId = require('mongodb').ObjectID;
 
 const resolvers = {
-
+  // query resolvers
+  
   members: async (args) => {
     return (await models.Member.find())
   },
@@ -18,6 +19,17 @@ const resolvers = {
   trailer: async (args) => {
     return (await models.Trailer.find({"trailerid": args.id}))
   },
+
+  // mutations resolvers
+  changeLoc: async (args) => {
+    return await models.Users.find({"user.id":args.id}, function(err, user){
+      user.location = 'asd';
+      user.save();
+    });
+    // console(userLoc);
+    // return userLoc
+  },
+
   addUser: async (args) => {
     console.log(args);
     var newUser = new Users({
@@ -42,25 +54,6 @@ const resolvers = {
     })
     console.log(newTrailer.save())
   }
-
-//   addBook: async (args, context) => {
-//     var newBook = new Book({
-//       title: args.title,
-//       author: args.author
-//     })
-
-//     var err = await newBook.save()
-
-//     if (err) return err
-//     return newBook
-//   },
-//   removeBook: async (args, context) => {
-//     var doc = await Book.findOneAndRemove({
-//       title: args.title
-//     })
-
-//     return doc
-//   }
 }
 
 module.exports = resolvers
