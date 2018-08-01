@@ -62,6 +62,17 @@ const resolvers = {
       state:      args.state
     })
     console.log(newTrailer.save())
+  },
+  addMember: async (args) => {
+    var newMember = new models.Member({
+      id:     args.id,
+      post:   "user" 
+    });
+
+    var err = await newMember.save();
+
+    if(err) console.log(err)
+    return newMember
   }
 }
 
