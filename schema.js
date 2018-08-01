@@ -45,6 +45,11 @@ module.exports = new buildSchema(`
       truckid:String
     }
 
+    type TrailerMap{
+      id: Int!,
+      name: String
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -52,7 +57,8 @@ module.exports = new buildSchema(`
       user(id:Int!): [Users],
       trailer(id:String!): [Trailer],
       reserves: [Reserve],
-      reserve(id:String): [Reserve]
+      reserve(id:String): [Reserve],
+      trailermap(id:Int,name:String): [TrailerMap]
     }
 
     type Mutation {

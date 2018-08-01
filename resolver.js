@@ -25,6 +25,12 @@ const resolvers = {
   reserve: async (args) => {
     return (await models.Reserve.find({"trailerid":args.id}).sort({"reserved":-1}).limit(1))
   },
+  trailermap: async (args) => {
+    if(args.id)
+      return (await models.TrailerMap.find({"id":args.id}))
+    if(args.name)
+      return (await models.TrailerMap.find({"name":args.name}))      
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {

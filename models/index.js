@@ -45,9 +45,17 @@ const reserveSchema = mongoose.Schema({
 
 let Reserve = mongoose.model('reserves',reserveSchema);
 
+const trailermap = mongoose.Schema({
+    id:     Number,
+    name:   String
+});
+
+let TrailerMap = mongoose.model('trailermaps', trailermap);
+
 module.exports = {
     Member:Member,
     Users:Users,
     Trailer:Trailer,
-    Reserve:Reserve
+    Reserve:Reserve,
+    TrailerMap:TrailerMap
 }
