@@ -1,4 +1,5 @@
 const models = require('./models')
+const md5 = require('md5');
 var ObjectId = require('mongodb').ObjectID;
 
 const resolvers = {
@@ -14,7 +15,9 @@ const resolvers = {
     return (await models.Users.find({}))
   },
   user: async (args) => {
-    return (await models.Users.find({"login": args.login,"password": args.password}))
+    let hash = md5(args.password);
+    console.log(hash);
+    return (await models.Users.find({"login": args.login,"password": hash.toUpperCase()}))
   },
   trailer: async (args) => {
     return (await models.Trailer.find({"trailerid": args.id}))
