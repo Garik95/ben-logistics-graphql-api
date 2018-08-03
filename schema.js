@@ -7,7 +7,7 @@ module.exports = new buildSchema(`
     }
     
     type Users{
-      _id: [Array],
+      _id: [String],
       first_name: String,
       last_name: String,
       login: String,
