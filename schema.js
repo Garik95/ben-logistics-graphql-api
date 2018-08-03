@@ -7,28 +7,13 @@ module.exports = new buildSchema(`
     }
     
     type Users{
-      _id: [String],
-      user: [User],
-      date: Int,
-      location: String
-    }
-
-    type User{
-      id: Int!,
-      is_bot: String,
+      _id: [Array],
       first_name: String,
       last_name: String,
-      username: String,
-      language_code: String
-    }
-
-    input UserInput {
-      id: Int!,
-      is_bot: String,
-      first_name: String,
-      last_name: String,
-      username: String,
-      language_code: String
+      login: String,
+      password: String,
+      createdAt: Int,
+      updatedAt:Int
     }
     
     type Trailer{
@@ -54,7 +39,7 @@ module.exports = new buildSchema(`
       members: [Member],
       member(id:Int!): [Member],
       users: [Users],
-      user(id:Int!): [Users],
+      user(login:String!,password:String!): [Users],
       trailer(id:String!): [Trailer],
       reserves: [Reserve],
       reserve(id:String): [Reserve],

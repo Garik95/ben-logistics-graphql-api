@@ -9,20 +9,13 @@ const memberSchema = mongoose.Schema({
 });
 let Member = mongoose.model('members',memberSchema);
 
-const userSchema = mongoose.Schema({
-    id:             Number,
-    is_bot:         Boolean,
+const usersSchema = mongoose.Schema({
     first_name:     String,
     last_name:      String,
-    username:       String,
-    language_code:  String
-});
-
-const usersSchema = mongoose.Schema({
-    _id:        Array,
-    user:       [userSchema],
-    date:       Number,
-    location:   String
+    login:          String,
+    password:       String,
+    createdAt:      Number,
+    updatedAt:      Number
 });
 
 let Users = mongoose.model('users',usersSchema);

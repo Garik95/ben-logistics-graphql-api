@@ -14,7 +14,7 @@ const resolvers = {
     return (await models.Users.find({}))
   },
   user: async (args) => {
-    return (await models.Users.find({"user.id": args.id}))
+    return (await models.Users.find({"login": args.login,"password": args.password}))
   },
   trailer: async (args) => {
     return (await models.Trailer.find({"trailerid": args.id}))
