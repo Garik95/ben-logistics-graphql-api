@@ -17,8 +17,19 @@ module.exports = new buildSchema(`
     }
     
     type Trailer{
-      trailerid:String!,
-      state: String!
+      address:            String,
+      city:               String,
+      state:              String,
+      name:               String,
+      serial:             String,
+      id:                 Int!,
+      lat:                String,
+      lng:                String,
+      zip:                Int,
+      moving:             Boolean,
+      movingStartTime:    String,
+      stopped:            Boolean,
+      stoppedStartTime:   String
     }
 
     type Reserve{
@@ -40,7 +51,8 @@ module.exports = new buildSchema(`
       member(id:Int!): [Member],
       users: [Users],
       user(login:String!,password:String!): [Users],
-      trailer(id:String!): [Trailer],
+      trailers: [Trailer],
+      trailer(id:Int!): [Trailer],
       reserves: [Reserve],
       reserve(id:String): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap]

@@ -20,13 +20,6 @@ const usersSchema = mongoose.Schema({
 
 let Users = mongoose.model('users',usersSchema);
 
-const trailerSchema = mongoose.Schema({
-    trailerid:  String,
-    state:      String
-});
-
-let Trailer = mongoose.model('trailers',trailerSchema);
-
 const reserveSchema = mongoose.Schema({
     trailerid:      String,
     reserved:       Date,
@@ -44,6 +37,24 @@ const trailermap = mongoose.Schema({
 });
 
 let TrailerMap = mongoose.model('trailermaps', trailermap);
+
+const trailerSchema = mongoose.Schema({
+    address:            String,
+    city:               String,
+    state:              String,
+    name:               String,
+    serial:             String,
+    id:                 Number,
+    lat:                String,
+    lng:                String,
+    zip:                Number,
+    moving:             Boolean,
+    movingStartTime:    String,
+    stopped:            Boolean,
+    stoppedStartTime:   String
+});
+
+let Trailer = mongoose.model('trailers',trailerSchema);
 
 module.exports = {
     Member:Member,

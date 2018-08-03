@@ -18,8 +18,11 @@ const resolvers = {
     let hash = md5(args.password);
     return (await models.Users.find({"login": args.login,"password": hash.toUpperCase()}))
   },
+  trailers: async (args) => {
+    return (await models.Trailer.find({}))
+  },
   trailer: async (args) => {
-    return (await models.Trailer.find({"trailerid": args.id}))
+    return (await models.Trailer.find({"id": args.id}))
   },
   reserves: async (args) => {
     return (await models.Reserve.find({}))
