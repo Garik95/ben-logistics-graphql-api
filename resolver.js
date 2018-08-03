@@ -16,7 +16,6 @@ const resolvers = {
   },
   user: async (args) => {
     let hash = md5(args.password);
-    console.log(hash);
     return (await models.Users.find({"login": args.login,"password": hash.toUpperCase()}))
   },
   trailer: async (args) => {
