@@ -29,7 +29,8 @@ module.exports = new buildSchema(`
       moving:             Boolean,
       movingStartTime:    String,
       stopped:            Boolean,
-      stoppedStartTime:   String
+      stoppedStartTime:   String,
+      status:             String
     }
 
     type Reserve{
