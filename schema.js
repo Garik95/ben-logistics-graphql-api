@@ -49,6 +49,7 @@ module.exports = new buildSchema(`
     }
 
     type Token{
+      name: String!,
       service: String!,
       token: String!
     }

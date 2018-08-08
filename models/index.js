@@ -59,6 +59,7 @@ const trailerSchema = mongoose.Schema({
 let Trailer = mongoose.model('trailers',trailerSchema);
 
 const tokenSchema = mongoose.Schema({
+    name:       String,
     service:    String,
     token:      String
 });
