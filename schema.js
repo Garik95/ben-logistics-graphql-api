@@ -48,6 +48,11 @@ module.exports = new buildSchema(`
       name: String
     }
 
+    type Token{
+      service: String!,
+      token: String!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -57,7 +62,8 @@ module.exports = new buildSchema(`
       trailer(id:Int!): [Trailer],
       reserves: [Reserve],
       reserve(id:String): [Reserve],
-      trailermap(id:Int,name:String): [TrailerMap]
+      trailermap(id:Int,name:String): [TrailerMap],
+      token(service:String!): [Token]
     }
 
     type Mutation {

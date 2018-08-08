@@ -58,10 +58,18 @@ const trailerSchema = mongoose.Schema({
 
 let Trailer = mongoose.model('trailers',trailerSchema);
 
+const tokenSchema = mongoose.Schema({
+    service:    String,
+    token:      String
+});
+
+let Token = mongoose.model('tokens',tokenSchema);
+
 module.exports = {
     Member:Member,
     Users:Users,
     Trailer:Trailer,
     Reserve:Reserve,
-    TrailerMap:TrailerMap
+    TrailerMap:TrailerMap,
+    Token:Token
 }

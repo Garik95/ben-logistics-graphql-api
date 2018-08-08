@@ -36,6 +36,9 @@ const resolvers = {
     if(args.name)
       return (await models.TrailerMap.find({"name":args.name}))      
   },
+  token: async (args) => {
+    return (await models.Token.find({"service":args.service}))
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
