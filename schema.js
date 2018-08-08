@@ -13,7 +13,8 @@ module.exports = new buildSchema(`
       login: String,
       password: String,
       createdAt: Int,
-      updatedAt:Int
+      updatedAt:Int,
+      post: String
     }
     
     type Trailer{
