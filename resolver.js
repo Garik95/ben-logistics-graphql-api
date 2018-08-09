@@ -43,7 +43,7 @@ const resolvers = {
     return (await models.Token.find({}))
   },
   truck: async (args) => {
-    return (await console.log(models.Truck.find({"label":{$regex: args.label}})))
+    return (await models.Truck.find({"label":{ "$regex": args.label}}))
   },
   trucks: async (args) => {
     return (await models.Truck.find({}))
