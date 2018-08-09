@@ -57,7 +57,7 @@ module.exports = new buildSchema(`
     type Truck{
       id: Int!,
       vin: String,
-      label: String,
+      label: Int,
       color: String,
       make: String,
       model: String,
