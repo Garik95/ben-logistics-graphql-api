@@ -54,6 +54,17 @@ module.exports = new buildSchema(`
       token: String!
     }
 
+    type Truck{
+      id: Int!,
+      vin: String,
+      label: String,
+      color: String,
+      make: String,
+      model: String,
+      deviceSerialNumber: String,
+      year: Int!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -65,7 +76,9 @@ module.exports = new buildSchema(`
       reserve(id:String): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
       token(service:String!): [Token],
-      tokens: [Token]
+      tokens: [Token],
+      truck(label:Int!): [Truck],
+      trucks: [Truck]
     }
 
     type Mutation {

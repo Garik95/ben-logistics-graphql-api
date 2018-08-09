@@ -66,11 +66,25 @@ const tokenSchema = mongoose.Schema({
 
 let Token = mongoose.model('tokens',tokenSchema);
 
+const truckSchema = mongoose.Schema({
+    id:                     Number,
+    vin:                    String,
+    label:                  String,
+    color:                  String,
+    make:                   String,
+    model:                  String,
+    deviceSerialNumber:     String,
+    year:                   Number
+});
+
+let Truck = mongoose.model('trucks', truckSchema);
+
 module.exports = {
     Member:Member,
     Users:Users,
     Trailer:Trailer,
     Reserve:Reserve,
     TrailerMap:TrailerMap,
-    Token:Token
+    Token:Token,
+    Truck:Truck
 }

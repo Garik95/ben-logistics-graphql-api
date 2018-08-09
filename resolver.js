@@ -42,6 +42,12 @@ const resolvers = {
   tokens: async (args) => {
     return (await models.Token.find({}))
   },
+  truck: async (args) => {
+    return (await models.Truck.find({"label":/ + args.label + /}))
+  },
+  trucks: async (args) => {
+    return (await models.Truck.find({}))
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
