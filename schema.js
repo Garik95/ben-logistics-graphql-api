@@ -64,7 +64,8 @@ module.exports = new buildSchema(`
       reserves: [Reserve],
       reserve(id:String): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
-      token(service:String!): [Token]
+      token(service:String!): [Token],
+      tokens: [Token]
     }
 
     type Mutation {

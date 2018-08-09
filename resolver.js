@@ -39,6 +39,9 @@ const resolvers = {
   token: async (args) => {
     return (await models.Token.find({"service":args.service}))
   },
+  tokens: async (args) => {
+    return (await models.Token.find({}))
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
