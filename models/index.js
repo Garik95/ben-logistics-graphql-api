@@ -69,7 +69,7 @@ let Token = mongoose.model('tokens',tokenSchema);
 const truckSchema = mongoose.Schema({
     id:                     Number,
     vin:                    String,
-    label:                  Number,
+    label:                  String,
     color:                  String,
     make:                   String,
     model:                  String,
