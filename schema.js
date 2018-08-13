@@ -97,7 +97,7 @@ module.exports = new buildSchema(`
       driver(id:Int,truckid:Int): [Driver],
       drivers: [Driver],
       location(truckid:Int!): [Location],
-      locations: [Locations]
+      locations: [Location]
     }
 
     type Mutation {
