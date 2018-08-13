@@ -65,6 +65,21 @@ module.exports = new buildSchema(`
       year: Int!
     }
 
+    type Driver{
+      id:                 Int!,
+      first_name:         String,
+      last_name:          String,
+      email:              String,
+      truckid:            Int,
+      active:             String
+    }
+
+    type Location{
+      latitude:           Float,
+      longitude:          Float,
+      truckid:            Int!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -78,7 +93,11 @@ module.exports = new buildSchema(`
       token(service:String!): [Token],
       tokens: [Token],
       truck(label:Int!): [Truck],
-      trucks: [Truck]
+      trucks: [Truck],
+      driver(id:Int,truckid:Int): [Driver],
+      drivers: [Driver],
+      location(truckid:Int!): [Location],
+      locations: [Locations]
     }
 
     type Mutation {

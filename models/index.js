@@ -79,6 +79,25 @@ const truckSchema = mongoose.Schema({
 
 let Truck = mongoose.model('trucks', truckSchema);
 
+const DriverSchema = mongoose.Schema({
+    id:                 Number,
+    first_name:         String,
+    last_name:          String,
+    email:              String,
+    truckid:            Number,
+    active:             Boolean
+});
+
+let Driver = mongoose.model('drivers',DriverSchema);
+
+const LocationSchema = mongoose.Schema({
+    latitude:           Number,
+    longitude:          Number,
+    truckid:            Number
+})
+
+let Location = mongoose.model('locations',LocationSchema);
+
 module.exports = {
     Member:Member,
     Users:Users,
@@ -86,5 +105,7 @@ module.exports = {
     Reserve:Reserve,
     TrailerMap:TrailerMap,
     Token:Token,
-    Truck:Truck
+    Truck:Truck,
+    Driver:Driver,
+    Location:Location
 }

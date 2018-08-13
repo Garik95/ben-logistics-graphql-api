@@ -48,6 +48,21 @@ const resolvers = {
   trucks: async (args) => {
     return (await models.Truck.find({}))
   },
+  driver: async (args) => {
+    if(args.id)
+      return (await models.Driver.find({"id":args.id}))
+    if(args.truckid)
+      return (await models.Driver.find({"truckid":args.truckid}))
+  },
+  drivers: async (args) => {
+    return (await models.Driver.find({}))
+  },
+  location: async (args) => {
+    return (await models.Location.find({"truckid":args.truckid}))
+  },
+  locations: async (args) => {
+    return (await models.Location.find({}))
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
