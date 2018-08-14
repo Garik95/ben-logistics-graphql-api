@@ -1,11 +1,9 @@
 const models = require('./models')
 const md5 = require('md5');
+const date = require('date-and-time');
 var ObjectId = require('mongodb').ObjectID;
 
-Date.prototype.addHours= function(h){
-  this.setHours(this.getHours()+h);
-  return this;
-}
+let now = new Date();
 
 const resolvers = {
   // query resolvers
@@ -117,7 +115,7 @@ const resolvers = {
       reserved: Date.now(),
       lat: "1",
       long: "1",
-      time: Date.now().addHours(4),
+      time: date.addHours(now, -1),
       truckid: 123
     });
     var err = await newReserve.save();
