@@ -2,6 +2,11 @@ const models = require('./models')
 const md5 = require('md5');
 var ObjectId = require('mongodb').ObjectID;
 
+Date.prototype.addHours= function(h){
+  this.setHours(this.getHours()+h);
+  return this;
+}
+
 const resolvers = {
   // query resolvers
   
@@ -112,7 +117,7 @@ const resolvers = {
       reserved: Date.now(),
       lat: "1",
       long: "1",
-      time: Date.now(),
+      time: Date.now().addHours(4),
       truckid: 123
     });
     var err = await newReserve.save();

@@ -26,7 +26,7 @@ const reserveSchema = mongoose.Schema({
     reserved:       Date,
     lat:            String,
     long:           String,
-    time:           String,
+    time:           Date,
     truckid:        String
 });
 
