@@ -40,7 +40,8 @@ module.exports = new buildSchema(`
       lat: String,
       long:String,
       time:String,
-      truckid:String
+      truckid:String,
+      user:String
     }
 
     type TrailerMap{
@@ -105,7 +106,7 @@ module.exports = new buildSchema(`
       addTrailer(id:String!,state:String!): Trailer!,
       changeLoc(id:Int!,location:String!): Users!,
       addMember(id:Int!): Member,
-      addReserve(trailerid:Int!): Reserve
+      addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:String!,user:String!): Reserve
     }
     
 

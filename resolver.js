@@ -113,10 +113,11 @@ const resolvers = {
     var newReserve = new models.Reserve({
       trailerid: args.trailerid,
       reserved: Date.now(),
-      lat: "1",
-      long: "1",
+      lat: args.lat,
+      long: args.lng,
       time: date.addHours(now, 4),
-      truckid: 123
+      truckid: args.truckid,
+      user: args.user
     });
     var err = await newReserve.save();
 

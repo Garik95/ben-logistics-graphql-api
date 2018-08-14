@@ -27,7 +27,8 @@ const reserveSchema = mongoose.Schema({
     lat:            String,
     long:           String,
     time:           Date,
-    truckid:        String
+    truckid:        String,
+    user:           String
 });
 
 let Reserve = mongoose.model('reserves',reserveSchema);
