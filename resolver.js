@@ -105,6 +105,20 @@ const resolvers = {
 
     if(err) console.log(err)
     return newMember
+  },
+  addReserve: async (args) => {
+    var newReserve = new models.Reserve({
+      trailerid: args.trailerid,
+      reserved: Date.now(),
+      lat: "1",
+      long: "1",
+      time: Date.now(),
+      truckid: 123
+    });
+    var err = await newReserve.save();
+
+    if(err) console.log(err)
+    return newReserve
   }
 }
 

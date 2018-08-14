@@ -35,7 +35,7 @@ module.exports = new buildSchema(`
     }
 
     type Reserve{
-      trailerid: String!,
+      trailerid: Int!,
       reserved: String,
       lat: String,
       long:String,
@@ -104,7 +104,8 @@ module.exports = new buildSchema(`
       addUser(date:Int): Users!,
       addTrailer(id:String!,state:String!): Trailer!,
       changeLoc(id:Int!,location:String!): Users!,
-      addMember(id:Int!): Member
+      addMember(id:Int!): Member,
+      addReserve(trailerid:Int!): Reserve
     }
     
 
