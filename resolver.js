@@ -123,7 +123,10 @@ const resolvers = {
 
     if(err) console.log(err)
 
-    models.Trailer.findOneAndUpdate({id:args.trailerid},{$set:{"status":"reserved"}})
+    models.Trailer.findOneAndUpdate({id:args.trailerid},{$set:{"status":"reserved"}}, function (err,res) {
+      console.log(err)
+      console.log(res)
+    })
 
     return newReserve
   }
