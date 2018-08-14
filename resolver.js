@@ -115,7 +115,7 @@ const resolvers = {
       reserved: Date.now(),
       lat: "1",
       long: "1",
-      time: date.addHours(now, -1),
+      time: date.addHours(now, 4),
       truckid: 123
     });
     var err = await newReserve.save();
