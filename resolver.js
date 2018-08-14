@@ -122,6 +122,9 @@ const resolvers = {
     var err = await newReserve.save();
 
     if(err) console.log(err)
+
+    models.Trailer.update({id:args.trailerid},{$set:{"status":"reserved"}})
+
     return newReserve
   }
 }
