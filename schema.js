@@ -82,7 +82,8 @@ module.exports = new buildSchema(`
     }
 
     type TempTrailer{
-      id: Int!
+      id: Int!,
+      user: String
     }
 
     type Query {

@@ -135,7 +135,8 @@ const resolvers = {
   },
   addTempTrailer: async (args) => {
     var newTempTrailer = new models.TempTrailer({
-      id: args.id
+      id:   args.id,
+      user: args.user
     });
     var err = await newTempTrailer.save();
 
