@@ -100,7 +100,7 @@ const LocationSchema = mongoose.Schema({
 let Location = mongoose.model('locations',LocationSchema);
 
 const TempTrailerSchema = mongoose.Schema({
-    id:                 Number
+    id:{type: Number, unique: true}
 });
 
 let TempTrailer = mongoose.model('temptrailer',TempTrailerSchema)
