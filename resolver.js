@@ -142,7 +142,7 @@ const resolvers = {
     if(err) console.log(err)
   },
   deleteTempTrailer: async (args) => {
-    models.TempTrailer.findByIdAndRemove({"id":args.id}, function (err, res) {
+    models.TempTrailer.remove({"id":args.id}, function (err, res) {
       console.log(err)
       console.log(res)
     })
