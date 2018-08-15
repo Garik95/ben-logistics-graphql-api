@@ -113,7 +113,7 @@ module.exports = new buildSchema(`
       changeLoc(id:Int!,location:String!): Users!,
       addMember(id:Int!): Member,
       addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:String!,user:String!): Reserve,
-      addTempTrailer(id:Int!): TempTrailer,
+      addTempTrailer(id:Int!,user:String!): TempTrailer,
       deleteTempTrailer(id:Int!): TempTrailer
     }
     
