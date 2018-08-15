@@ -81,6 +81,10 @@ module.exports = new buildSchema(`
       truckid:            Int!
     }
 
+    type TempTrailer{
+      id: Int!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -98,7 +102,8 @@ module.exports = new buildSchema(`
       driver(id:Int,truckid:Int): [Driver],
       drivers: [Driver],
       location(truckid:Int!): [Location],
-      locations: [Location]
+      locations: [Location],
+      temptrailer: [TempTrailer]
     }
 
     type Mutation {
@@ -106,7 +111,9 @@ module.exports = new buildSchema(`
       addTrailer(id:String!,state:String!): Trailer!,
       changeLoc(id:Int!,location:String!): Users!,
       addMember(id:Int!): Member,
-      addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:String!,user:String!): Reserve
+      addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:String!,user:String!): Reserve,
+      addTempTrailer(id:Int!): TempTrailer,
+      deleteTempTrailer(id:Int!): TempTrailer
     }
     
 

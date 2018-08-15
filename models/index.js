@@ -99,6 +99,12 @@ const LocationSchema = mongoose.Schema({
 
 let Location = mongoose.model('locations',LocationSchema);
 
+const TempTrailerSchema = mongoose.Schema({
+    id:                 Number
+});
+
+let TempTrailer = mongoose.model('temptrailer',TempTrailerSchema)
+
 module.exports = {
     Member:Member,
     Users:Users,
@@ -108,5 +114,6 @@ module.exports = {
     Token:Token,
     Truck:Truck,
     Driver:Driver,
-    Location:Location
+    Location:Location,
+    TempTrailer:TempTrailer
 }

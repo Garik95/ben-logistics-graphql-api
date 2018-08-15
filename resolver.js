@@ -66,6 +66,9 @@ const resolvers = {
   locations: async (args) => {
     return (await models.Location.find({}))
   },
+  temptrailer: async (args) => {
+    return (await models.TempTrailer.find({}))
+  }
 
   // mutations resolvers
   changeLoc: async (args) => {
@@ -124,11 +127,25 @@ const resolvers = {
     if(err) console.log(err)
 
     models.Trailer.update({id:args.trailerid},{$set:{"status":"reserved"}}, function (err,res) {
-      console.log(err)
-      console.log(res)
+      if(err) console.log(err)
+      else console.log(res)
     })
 
     return newReserve
+  },
+  addTempTrailer: async (args) => {
+    var newTempTrailer = new models.TempTrailer({
+      id: args.id
+    });
+    var err = await newTempTrailer.save();
+
+    if(err) console.log(err)
+  }
+  deleteTempTrailer: async (args) => {
+    models.TempTrailer.findByIdAndRemove({"id":args.id}, function (err, res) {
+      console.log(err)
+      console.log(res)
+    })
   }
 }
 
