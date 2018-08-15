@@ -68,7 +68,7 @@ const resolvers = {
   },
   temptrailer: async (args) => {
     return (await models.TempTrailer.find({}))
-  }
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
