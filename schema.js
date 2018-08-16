@@ -40,7 +40,7 @@ module.exports = new buildSchema(`
       lat: String,
       long:String,
       time:String,
-      truckid:String,
+      truckid:Int,
       user:String
     }
 
@@ -113,7 +113,7 @@ module.exports = new buildSchema(`
       addTrailer(id:String!,state:String!): Trailer!,
       changeLoc(id:Int!,location:String!): Users!,
       addMember(id:Int!): Member,
-      addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:String!,user:String!): Reserve,
+      addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:Int!,user:String!): Reserve,
       addTempTrailer(id:Int!,user:String!): TempTrailer,
       deleteTempTrailer(id:Int!): TempTrailer
     }
