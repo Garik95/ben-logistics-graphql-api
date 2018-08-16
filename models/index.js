@@ -75,7 +75,8 @@ const truckSchema = mongoose.Schema({
     make:                   String,
     model:                  String,
     deviceSerialNumber:     String,
-    year:                   Number
+    year:                   Number,
+    isAvailable:            Boolean
 });
 
 let Truck = mongoose.model('trucks', truckSchema);

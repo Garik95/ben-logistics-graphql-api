@@ -63,7 +63,8 @@ module.exports = new buildSchema(`
       make: String,
       model: String,
       deviceSerialNumber: String,
-      year: Int!
+      year: Int!,
+      isAvailable: Boolean
     }
 
     type Driver{
