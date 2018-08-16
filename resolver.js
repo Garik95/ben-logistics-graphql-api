@@ -131,6 +131,11 @@ const resolvers = {
       else console.log(res)
     })
 
+    models.Truck.update({id:args.truckid},{$set:{"isAvailable":false}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+
     return newReserve
   },
   addTempTrailer: async (args) => {
