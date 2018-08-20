@@ -1,6 +1,10 @@
 const models = require('./models')
 const md5 = require('md5');
 const date = require('date-and-time');
+const io = require('socket.io-client');
+
+var socket = io.connect('http://middleware.eu-4.evennode.com');
+
 var ObjectId = require('mongodb').ObjectID;
 
 let now = new Date();
@@ -120,7 +124,8 @@ const resolvers = {
       long: args.lng,
       time: date.addHours(now, 4),
       truckid: args.truckid,
-      user: args.user
+      user: args.user,
+      status: "active"
     });
     var err = await newReserve.save();
 
@@ -135,6 +140,8 @@ const resolvers = {
       if(err) console.log(err)
       else console.log(res)
     })
+
+    socket.emit('reserve', { trailerid: args.trailerid, state: 'reserved'})
 
     return newReserve
   },

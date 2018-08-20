@@ -41,7 +41,8 @@ module.exports = new buildSchema(`
       long:String,
       time:String,
       truckid:Int,
-      user:String
+      user:String,
+      status: String
     }
 
     type TrailerMap{
