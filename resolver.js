@@ -119,7 +119,7 @@ const resolvers = {
   addReserve: async (args) => {
     var newReserve = new models.Reserve({
       trailerid: args.trailerid,
-      reserved: Date.now(),
+      reserved: now,
       lat: args.lat,
       long: args.lng,
       time: date.addHours(now, 4),
