@@ -34,6 +34,9 @@ const resolvers = {
   reserves: async (args) => {
     return (await models.Reserve.find({}))
   },
+  activeReserves: async (args) => {
+    return (await models.Reserve.find({"status":"active"}))
+  },
   reserve: async (args) => {
     return (await models.Reserve.find({"trailerid":args.id}).sort({"reserved":-1}).limit(1))
   },

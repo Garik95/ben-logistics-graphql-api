@@ -96,6 +96,7 @@ module.exports = new buildSchema(`
       trailers: [Trailer],
       trailer(id:Int!): [Trailer],
       reserves: [Reserve],
+      activeReserves: [Reserve],      
       reserve(id:String): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
       token(service:String!): [Token],
