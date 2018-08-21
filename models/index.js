@@ -22,6 +22,7 @@ const usersSchema = mongoose.Schema({
 let Users = mongoose.model('users',usersSchema);
 
 const reserveSchema = mongoose.Schema({
+    _id:            String,
     trailerid:      Number,
     reserved:       Date,
     lat:            String,

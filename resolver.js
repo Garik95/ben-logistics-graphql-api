@@ -40,6 +40,12 @@ const resolvers = {
   userReserves: async (args) => {
     return (await models.Reserve.find({"user": args.user}))
   },
+  userActiveReserves: async (args) => {
+    return (await models.Reserve.find({"user": args.user,"status":"active"}))
+  },
+  userHookedReserves: async (args) => {
+    return (await models.Reserve.find({"user": args.user,"status":"hooked"}))
+  },
   reserve: async (args) => {
     return (await models.Reserve.find({"trailerid":args.id}).sort({"reserved":-1}).limit(1))
   },

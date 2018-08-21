@@ -35,6 +35,7 @@ module.exports = new buildSchema(`
     }
 
     type Reserve{
+      _id: String,
       trailerid: Int!,
       reserved: String,
       lat: String,
@@ -98,6 +99,8 @@ module.exports = new buildSchema(`
       reserves: [Reserve],
       activeReserves: [Reserve],      
       userReserves(user:String!): [Reserve],      
+      userActiveReserves(user:String!): [Reserve],      
+      userHookedReserves(user:String!): [Reserve],      
       reserve(id:String): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
       token(service:String!): [Token],
