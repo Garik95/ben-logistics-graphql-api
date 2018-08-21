@@ -91,9 +91,12 @@ module.exports = new buildSchema(`
 
     type Vehiclecount{
       trailer: Int!,
+      newTrailer: Int!,
       truck: Int!,
+      newTruck: Int!,
       driver: Int!,
       user: Int!,
+      newReserve: Int!,
       reserve: Int!
     }
 
@@ -132,7 +135,8 @@ module.exports = new buildSchema(`
       addTempTrailer(id:Int!,user:String!): TempTrailer,
       deleteTempTrailer(id:Int!): TempTrailer,
       hook(_id:String!): Reserve,
-      freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve
+      freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve,
+      setTrailerStatus(id:Int!,status:String!): Trailer
     }
     
 

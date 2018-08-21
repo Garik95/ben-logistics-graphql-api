@@ -86,12 +86,15 @@ const resolvers = {
     return (await models.TempTrailer.find({}))
   },
   vehiclecount: async (args) => {
-    var trailer = models.Trailer.find({}).count();
-    var truck =   models.Truck.find({}).count();
-    var driver =  models.Driver.find({}).count();
-    var user =    models.Users.find({}).count();
-    var reserve = models.Reserve.find({"status":"active"}).count();
-    return (await {trailer,truck,driver,user,reserve})
+    var trailer =     models.Trailer.find({}).count();
+    var newTrailer =  models.Trailer.find({"status":null}).count();
+    var truck =       models.Truck.find({}).count();
+    var newTruck =    models.Truck.find({"isAvailable":null}).count();
+    var driver =      models.Driver.find({}).count();
+    var user =        models.Users.find({}).count();
+    var reserve =     models.Reserve.find({}).count();
+    var newReserve =  models.Reserve.find({"status":"active"}).count();
+    return (await {trailer,newTrailer,truck,newTruck,driver,user,reserve,newReserve})
   },
 
   // mutations resolvers
@@ -203,6 +206,12 @@ const resolvers = {
   },
   hook: async (args) => {
     models.Reserve.update({ _id: ObjectId(args._id)},{$set:{"status":"hooked"}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+  },
+  setTrailerStatus: async (args) => {  
+    models.Trailer.update({"id":args.id},{$set:{"status":args.status.toLowerCase()}},{upsert:false,multi:true}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })
