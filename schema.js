@@ -89,6 +89,14 @@ module.exports = new buildSchema(`
       user: String
     }
 
+    type Vehiclecount{
+      trailer: Int!,
+      truck: Int!,
+      driver: Int!,
+      user: Int!,
+      reserve: Int!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -111,7 +119,8 @@ module.exports = new buildSchema(`
       drivers: [Driver],
       location(truckid:Int!): [Location],
       locations: [Location],
-      temptrailer: [TempTrailer]
+      temptrailer: [TempTrailer],
+      vehiclecount: Vehiclecount
     }
 
     type Mutation {

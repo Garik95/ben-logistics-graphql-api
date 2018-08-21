@@ -85,6 +85,14 @@ const resolvers = {
   temptrailer: async (args) => {
     return (await models.TempTrailer.find({}))
   },
+  vehiclecount: async (args) => {
+    var trailer = models.Trailer.find({}).count();
+    var truck =   models.Truck.find({}).count();
+    var driver =  models.Driver.find({}).count();
+    var user =    models.Users.find({}).count();
+    var reserve = models.Reserve.find({"status":"active"}).count();
+    return (await {trailer,truck,driver,user,reserve})
+  },
 
   // mutations resolvers
   changeLoc: async (args) => {
