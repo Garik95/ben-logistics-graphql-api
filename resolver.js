@@ -130,6 +130,7 @@ const resolvers = {
   },
   addReserve: async (args) => {
     var newReserve = new models.Reserve({
+      _id: ObjectId(),
       trailerid: args.trailerid,
       reserved: now,
       lat: args.lat,
@@ -157,6 +158,26 @@ const resolvers = {
 
     return newReserve
   },
+  freeReserve: async (args) => {
+
+    models.Reserve.update({ _id: ObjectId(args._id)},{$set:{"status":"released"}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+
+    models.Trailer.update({id:args.trailerid},{$set:{"status":"available"}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+
+    models.Truck.update({id:args.truckid},{$set:{"isAvailable":true}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+
+    socket.emit('reserve', { trailerid: args.trailerid, state: 'available'})
+
+  },
   addTempTrailer: async (args) => {
     var newTempTrailer = new models.TempTrailer({
       id:   args.id,
@@ -168,6 +189,12 @@ const resolvers = {
   },
   deleteTempTrailer: async (args) => {
     models.TempTrailer.remove({"id":args.id}, function (err, res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+  },
+  hook: async (args) => {
+    models.Reserve.update({ _id: ObjectId(args._id)},{$set:{"status":"hooked"}}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })

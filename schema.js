@@ -100,8 +100,8 @@ module.exports = new buildSchema(`
       activeReserves: [Reserve],      
       userReserves(user:String!): [Reserve],      
       userActiveReserves(user:String!): [Reserve],      
-      userHookedReserves(user:String!): [Reserve],      
-      reserve(id:String): [Reserve],
+      userHookedReserves(user:String!): [Reserve],     
+      reserve(id:String!): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
       token(service:String!): [Token],
       tokens: [Token],
@@ -121,7 +121,9 @@ module.exports = new buildSchema(`
       addMember(id:Int!): Member,
       addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:Int!,user:String!): Reserve,
       addTempTrailer(id:Int!,user:String!): TempTrailer,
-      deleteTempTrailer(id:Int!): TempTrailer
+      deleteTempTrailer(id:Int!): TempTrailer,
+      hook(_id:String!): Reserve,
+      freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve
     }
     
 
