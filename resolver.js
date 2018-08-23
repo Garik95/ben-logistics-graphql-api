@@ -28,8 +28,24 @@ const resolvers = {
   trailers: async (args) => {
     return (await models.Trailer.find({}))
   },
+  reservedTrailers: async (args) => {
+    return (await models.Trailer.find({"status":"reserved"}))
+  },
+  blockedTrailers: async (args) => {
+    return (await models.Trailer.find({"status":"blocked"}))
+  },
+  unassignedTrailers: async (args) => {
+    return (await models.Trailer.find({"status":null}))
+  },
   trailer: async (args) => {
     return (await models.Trailer.find({"id": args.id}))
+  },
+  countTrailer: async (args) => {
+    var all = models.Trailer.find({}).count();
+    var unassigned = models.Trailer.find({"status":null}).count();
+    var reserved = models.Trailer.find({"status":"reserved"}).count();
+    var blocked = models.Trailer.find({"status":"blocked"}).count();
+    return (await {all, unassigned, reserved, blocked})
   },
   reserves: async (args) => {
     return (await models.Reserve.find({}))
@@ -45,6 +61,9 @@ const resolvers = {
   },
   userHookedReserves: async (args) => {
     return (await models.Reserve.find({"user": args.user,"status":"hooked"}))
+  },
+  userDeliveredReserves: async (args) => {
+    return (await models.Reserve.find({"user": args.user,"status":"delivered"}))
   },
   reserve: async (args) => {
     return (await models.Reserve.find({"trailerid":args.id}).sort({"reserved":-1}).limit(1))
@@ -206,6 +225,12 @@ const resolvers = {
   },
   hook: async (args) => {
     models.Reserve.update({ _id: ObjectId(args._id)},{$set:{"status":"hooked"}}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+  },
+  deliver: async (args) => {
+    models.Reserve.update({ _id: ObjectId(args._id)},{$set:{"status":"delivered"}}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })

@@ -100,18 +100,30 @@ module.exports = new buildSchema(`
       reserve: Int!
     }
 
+    type CountTrailer{
+      all: Int!,
+      unassigned: Int!,
+      reserved: Int!,
+      blocked: Int!
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
       users: [Users],
       user(login:String!,password:String!): [Users],
       trailers: [Trailer],
+      reservedTrailers: [Trailer],
+      blockedTrailers: [Trailer],
+      unassignedTrailers: [Trailer],
       trailer(id:Int!): [Trailer],
+      countTrailer: CountTrailer,
       reserves: [Reserve],
       activeReserves: [Reserve],      
       userReserves(user:String!): [Reserve],      
       userActiveReserves(user:String!): [Reserve],      
       userHookedReserves(user:String!): [Reserve],     
+      userDeliveredReserves(user:String!): [Reserve],     
       reserve(id:String!): [Reserve],
       trailermap(id:Int,name:String): [TrailerMap],
       token(service:String!): [Token],
@@ -135,6 +147,7 @@ module.exports = new buildSchema(`
       addTempTrailer(id:Int!,user:String!): TempTrailer,
       deleteTempTrailer(id:Int!): TempTrailer,
       hook(_id:String!): Reserve,
+      deliver(_id:String!): Reserve,
       freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve,
       setTrailerStatus(id:Int!,status:String!): Trailer
     }
