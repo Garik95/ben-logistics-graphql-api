@@ -149,7 +149,8 @@ module.exports = new buildSchema(`
       hook(_id:String!): Reserve,
       deliver(_id:String!): Reserve,
       freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve,
-      setTrailerStatus(id:Int!,status:String!): Trailer
+      setTrailerStatus(id:Int!,status:String!): Trailer,
+      updateToken(service:String!,token:String!): Token
     }
     
 

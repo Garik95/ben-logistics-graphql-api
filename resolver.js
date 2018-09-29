@@ -240,6 +240,12 @@ const resolvers = {
       if(err) console.log(err)
       else console.log(res)
     })
+  },
+  updateToken: async (args) => {
+    models.Token.update({"service":args.service},{$set:{"token":args.token}},{upsert:true}, function(err,res){
+      if(err) console.log(err)
+      else console.log(res)
+    })
   }
 }
 
