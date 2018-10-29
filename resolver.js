@@ -3,7 +3,7 @@ const md5 = require('md5');
 const date = require('date-and-time');
 const io = require('socket.io-client');
 
-var socket = io.connect('http://localhost:8443');
+var socket = io.connect('http://ben-logistics-socket.eu-4.evennode.com/');
 
 var ObjectId = require('mongodb').ObjectID;
 
