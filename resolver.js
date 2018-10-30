@@ -167,6 +167,8 @@ const resolvers = {
       long: args.lng,
       time: date.addHours(now, 4),
       truckid: args.truckid,
+      city: args.city,
+      state: args.state,
       user: args.user,
       status: "active"
     });
