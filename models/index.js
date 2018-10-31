@@ -29,6 +29,8 @@ const reserveSchema = mongoose.Schema({
     long:           String,
     time:           Date,
     truckid:        Number,
+    city:           String,
+    state:          String,
     user:           String,
     status:         String
 });
