@@ -119,6 +119,7 @@ module.exports = new buildSchema(`
       reservedTrailers: [Trailer],
       blockedTrailers: [Trailer],
       unassignedTrailers: [Trailer],
+      deliveredTrailers: [Trailer],
       trailer(id:Int!): [Trailer],
       countTrailer: CountTrailer,
       reserves: [Reserve],

@@ -41,6 +41,9 @@ const resolvers = {
   unassignedTrailers: async (args) => {
     return (await models.Trailer.find({"status":null}))
   },
+  deliveredTrailers: async (args) => {
+    return (await models.Trailer.find({"status":"delivered"}))
+  },
   trailer: async (args) => {
     return (await models.Trailer.find({"id": args.id}))
   },
