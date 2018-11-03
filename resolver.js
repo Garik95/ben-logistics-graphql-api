@@ -114,13 +114,14 @@ const resolvers = {
   vehiclecount: async (args) => {
     var trailer =     models.Trailer.find({}).count();
     var newTrailer =  models.Trailer.find({"status":null}).count();
+    var delTrailer =  models.Trailer.find({"status":"delivered"}).count();
     var truck =       models.Truck.find({}).count();
     var newTruck =    models.Truck.find({"isAvailable":null}).count();
     var driver =      models.Driver.find({}).count();
     var user =        models.Users.find({}).count();
     var reserve =     models.Reserve.find({}).count();
     var newReserve =  models.Reserve.find({"status":"active"}).count();
-    return (await {trailer,newTrailer,truck,newTruck,driver,user,reserve,newReserve})
+    return (await {trailer,newTrailer,delTrailer,truck,newTruck,driver,user,reserve,newReserve})
   },
 
   // mutations resolvers
@@ -249,7 +250,7 @@ const resolvers = {
       else console.log(res)
     })
 
-    models.Trailer.update({"id":args.trailerid},{$set:{"status":"delivered"}},{upsert:false,multi:true}, function (err,res) {
+    models.Trailer.update({"id":args.trailerid},{$set:{"status":"delivered"}},{upsert:false}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })

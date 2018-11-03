@@ -94,6 +94,7 @@ module.exports = new buildSchema(`
     type Vehiclecount{
       trailer: Int!,
       newTrailer: Int!,
+      delTrailer: Int!,
       truck: Int!,
       newTruck: Int!,
       driver: Int!,
