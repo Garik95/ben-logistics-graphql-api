@@ -245,6 +245,11 @@ const resolvers = {
       if(err) console.log(err)
       else console.log(res)
     })
+
+    models.Trailer.update({"id":args.trailerid},{$set:{"status":"delivered"}},{upsert:false,multi:true}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
   },
   setTrailerStatus: async (args) => {  
     models.Trailer.update({"id":args.id},{$set:{"status":args.status.toLowerCase()}},{upsert:false,multi:true}, function (err,res) {
