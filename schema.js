@@ -115,6 +115,7 @@ module.exports = new buildSchema(`
       users: [Users],
       user(login:String!,password:String!): [Users],
       trailers: [Trailer],
+      trailersSearch(address:String,city:String,state:String,name:String,serial:String,id:Int,lat:String,lng:String,zip:Int,moving:Boolean,movingStartTime:String,stopped:Boolean,stoppedStartTime:String,status:String,limit:Int): [Trailer],
       reservedTrailers: [Trailer],
       blockedTrailers: [Trailer],
       unassignedTrailers: [Trailer],

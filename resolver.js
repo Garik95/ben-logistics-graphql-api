@@ -28,6 +28,10 @@ const resolvers = {
   trailers: async (args) => {
     return (await models.Trailer.find({}))
   },
+  trailersSearch: async (args) => {
+    args['status'] = "Available";
+    return (await models.Trailer.find(args).limit(25))
+  },
   reservedTrailers: async (args) => {
     return (await models.Trailer.find({"status":"reserved"}))
   },
