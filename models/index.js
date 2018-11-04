@@ -14,9 +14,8 @@ const usersSchema = mongoose.Schema({
     last_name:      String,
     login:          String,
     password:       String,
-    createdAt:      Number,
-    updatedAt:      Number,
-    post:           String
+    post:           String,
+    active:         String
 });
 
 let Users = mongoose.model('users',usersSchema);

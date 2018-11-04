@@ -12,9 +12,8 @@ module.exports = new buildSchema(`
       last_name: String,
       login: String,
       password: String,
-      createdAt: Int,
-      updatedAt:Int,
-      post: String
+      post: String,
+      active: String
     }
     
     type Trailer{
@@ -107,6 +106,7 @@ module.exports = new buildSchema(`
       all: Int!,
       unassigned: Int!,
       reserved: Int!,
+      delivered: Int!
       blocked: Int!
     }
 
@@ -144,7 +144,7 @@ module.exports = new buildSchema(`
     }
 
     type Mutation {
-      addUser(date:Int): Users!,
+      addUser(first_name: String!, last_name: String!, login: String!, password: String!, post: String!,active: String!): Users!,
       addTrailer(id:String!,state:String!): Trailer!,
       changeLoc(id:Int!,location:String!): Users!,
       addMember(id:Int!): Member,
@@ -152,7 +152,7 @@ module.exports = new buildSchema(`
       addTempTrailer(id:Int!,user:String!): TempTrailer,
       deleteTempTrailer(id:Int!): TempTrailer,
       hook(_id:String!): Reserve,
-      deliver(_id:String!): Reserve,
+      deliver(_id:String!,truck:Int!,trailer:Int!): Reserve,
       freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve,
       setTrailerStatus(id:Int!,status:String!): Trailer,
       updateToken(service:String!,token:String!): Token

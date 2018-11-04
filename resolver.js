@@ -51,8 +51,9 @@ const resolvers = {
     var all = models.Trailer.find({}).count();
     var unassigned = models.Trailer.find({"status":null}).count();
     var reserved = models.Trailer.find({"status":"reserved"}).count();
+    var delivered = models.Trailer.find({"status":"delivered"}).count();
     var blocked = models.Trailer.find({"status":"blocked"}).count();
-    return (await {all, unassigned, reserved, blocked})
+    return (await {all, unassigned, reserved, delivered, blocked})
   },
   reserves: async (args) => {
     return (await models.Reserve.find({}))
@@ -132,15 +133,13 @@ const resolvers = {
     ))
   },
   addUser: async (args) => {
-    console.log(args);
-    var newUser = new Users({
-      "user.id":            args.id,
-      "user.is_bot":        args.is_bot,
-      "user.first_name":    args.first_name,
-      "user.last_name":     args.last_name,
-      "user.username":      args.username,
-      "user.language_code": args.language_code,
-      "date":               args.date 
+    var newUser = new models.Users({
+      "first_name":         args.first_name,
+      "last_name":          args.last_name,
+      "login":              args.login,
+      "password":           md5(args.password).toUpperCase(),
+      "post":               args.post,
+      "active":             args.active
     })
 
     var err = await newUser.save()
@@ -245,12 +244,12 @@ const resolvers = {
       else console.log(res)
     })
     
-    models.Truck.update({id:args.truckid},{$set:{"isAvailable":true}}, function (err,res) {
+    models.Truck.update({id:args.truck},{$set:{"isAvailable":true}}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })
 
-    models.Trailer.update({"id":args.trailerid},{$set:{"status":"delivered"}},{upsert:false}, function (err,res) {
+    models.Trailer.update({"id":args.trailer},{$set:{"status":"delivered"}},{upsert:false}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })
