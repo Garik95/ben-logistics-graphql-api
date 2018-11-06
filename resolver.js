@@ -267,6 +267,24 @@ const resolvers = {
       if(err) console.log(err)
       else console.log(res)
     })
+  },
+  changePassword: async (args) => {
+    if(args.newPass === args.conPass)
+    {
+      models.Users.find({"login":args.login,"password":md5(args.oldPass).toUpperCase()},function(err,res){
+        if (err) return err;
+        else{
+          if(res.length > 0) {
+            models.Users.update({"login":args.login},{$set:{"password":md5(args.newPass).toUpperCase()}},function(err,childres){
+              if (err) console.log(err);
+              console.log(childres);
+              if(childres.ok == 1) console.log(args.login + "'s password changed to: "+args.newPass);
+            })
+          }
+          else return "Incorrect password!";
+        }
+      });
+    }else return "Password does not match!"
   }
 }
 
