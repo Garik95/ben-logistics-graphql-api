@@ -30,6 +30,8 @@ const resolvers = {
   },
   trailersSearch: async (args) => {
     args['status'] = "available";
+    args['name'] = { $regex: args['name'] };
+    // console.log(args);
     return (await models.Trailer.find(args).limit(25))
   },
   reservedTrailers: async (args) => {
