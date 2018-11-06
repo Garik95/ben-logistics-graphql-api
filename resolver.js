@@ -281,10 +281,10 @@ const resolvers = {
               if(childres.ok == 1) console.log(args.login + "'s password changed to: "+args.newPass);
             })
           }
-          else return "Incorrect password!";
+          else console.log("Incorrect password!");
         }
       });
-    }else return "Password does not match!"
+    }else console.log("Password does not match!");
   }
 }
 
