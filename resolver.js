@@ -30,7 +30,13 @@ const resolvers = {
   },
   trailersSearch: async (args) => {
     args['status'] = "available";
-    args['name'] = { $regex: args['name'] };
+    if(args['state']) args['state'] = args['state'].toUpperCase();
+    if(args['city']) {
+      args['city'] = args['city'].toLowerCase();
+      args['city'] = args['city'].charAt(0).toUpperCase()+ args['city'].slice(1);
+    }
+    if(args['name'])
+      args['name'] = { $regex: args['name'] };
     // console.log(args);
     return (await models.Trailer.find(args).limit(25))
   },
