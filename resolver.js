@@ -63,6 +63,14 @@ const resolvers = {
     var blocked = models.Trailer.find({"status":"blocked"}).count();
     return (await {all, unassigned, reserved, delivered, blocked})
   },
+  countTruck: async (args) => {
+    var all = models.Truck.find({}).count();
+    var unassigned = models.Truck.find({"isAvailable":null}).count();
+    var reserved = models.Truck.find({"isAvailable":false}).count();
+    var available = models.Truck.find({"isAvailable":true}).count();
+    var blocked = models.Truck.find({"isAvailable":"blocked"}).count();
+    return (await {all, unassigned, reserved, available, blocked})
+  },
   reserves: async (args) => {
     return (await models.Reserve.find({}))
   },

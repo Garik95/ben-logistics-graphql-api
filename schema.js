@@ -67,7 +67,7 @@ module.exports = new buildSchema(`
       model: String,
       deviceSerialNumber: String,
       year: Int!,
-      isAvailable: Boolean
+      isAvailable: String
     }
 
     type Driver{
@@ -110,6 +110,14 @@ module.exports = new buildSchema(`
       blocked: Int!
     }
 
+    type CountTruck{
+      all: Int!,
+      unassigned: Int!,
+      reserved: Int!,
+      available: Int!
+      blocked: Int!
+    }
+
     type PassChange{
       login: String,
       oldPass: String,
@@ -130,6 +138,7 @@ module.exports = new buildSchema(`
       deliveredTrailers: [Trailer],
       trailer(id:Int!): [Trailer],
       countTrailer: CountTrailer,
+      countTruck: CountTruck,
       reserves: [Reserve],
       activeReserves: [Reserve],      
       userReserves(user:String!): [Reserve],      
