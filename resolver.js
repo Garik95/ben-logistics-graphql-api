@@ -66,7 +66,7 @@ const resolvers = {
   countTruck: async (args) => {
     var all = models.Truck.find({}).count();
     var unassigned = models.Truck.find({"isAvailable":null}).count();
-    var reserved = models.Truck.find({"isAvailable":false}).count();
+    var reserved = models.Truck.find({"isAvailable":"false"}).count();
     var available = models.Truck.find({"isAvailable":true}).count();
     var blocked = models.Truck.find({"isAvailable":"blocked"}).count();
     return (await {all, unassigned, reserved, available, blocked})
@@ -114,7 +114,13 @@ const resolvers = {
     return (await models.Truck.find({"isAvailable":null}))
   },
   reservedTrucks: async (args) => {
-    return (await models.Truck.find({"isAvailable":false}))
+    return (await models.Truck.find({"isAvailable":"false"}))
+  },
+  availableTrucks: async (args) => {
+    return (await models.Truck.find({"isAvailable":true}))
+  },
+  blockedTrucks: async (args) => {
+    return (await models.Truck.find({"isAvailable":"blocked"}))
   },
   driver: async (args) => {
     if(args.id)
@@ -210,7 +216,7 @@ const resolvers = {
       else console.log(res)
     })
 
-    models.Truck.update({id:args.truckid},{$set:{"isAvailable":false}}, function (err,res) {
+    models.Truck.update({id:args.truckid},{$set:{"isAvailable":"false"}}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
     })

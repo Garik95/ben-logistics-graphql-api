@@ -153,6 +153,8 @@ module.exports = new buildSchema(`
       trucks: [Truck],
       unassignedTrucks: [Truck],
       reservedTrucks: [Truck],
+      availableTrucks: [Truck],
+      blockedTrucks: [Truck],
       driver(id:Int,truckid:Int): [Driver],
       drivers: [Driver],
       location(truckid:Int!): [Location],
