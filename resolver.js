@@ -102,6 +102,12 @@ const resolvers = {
   trucks: async (args) => {
     return (await models.Truck.find({}))
   },
+  unassignedTrucks: async (args) => {
+    return (await models.Truck.find({"isAvailable":null}))
+  },
+  reservedTrucks: async (args) => {
+    return (await models.Truck.find({"isAvailable":false}))
+  },
   driver: async (args) => {
     if(args.id)
       return (await models.Driver.find({"id":args.id}))

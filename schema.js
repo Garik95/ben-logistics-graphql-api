@@ -142,6 +142,8 @@ module.exports = new buildSchema(`
       tokens: [Token],
       truck(label:Int!): [Truck],
       trucks: [Truck],
+      unassignedTrucks: [Truck],
+      reservedTrucks: [Truck],
       driver(id:Int,truckid:Int): [Driver],
       drivers: [Driver],
       location(truckid:Int!): [Location],
