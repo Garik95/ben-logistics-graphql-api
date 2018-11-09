@@ -194,6 +194,7 @@ const resolvers = {
     return newMember
   },
   addReserve: async (args) => {
+    let now = new Date();
     var newReserve = new models.Reserve({
       _id: ObjectId(),
       trailerid: args.trailerid,
