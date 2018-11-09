@@ -247,10 +247,10 @@ const resolvers = {
 
   },
   freezeReserve: async (args) => {
-    models.Reserve.update({trailerid:args.trailerid,user:args.user},{$set:{"status":"freezed"}, function (err,res) {
+    models.Reserve.update({trailerid:args.trailerid,user:args.user,status:"active"},{$set:{"status":"freezed"}}, function (err,res) {
       if(err) console.log(err)
       else console.log(res)
-    }})
+    })
   },
   addTempTrailer: async (args) => {
     var newTempTrailer = new models.TempTrailer({
