@@ -141,6 +141,7 @@ module.exports = new buildSchema(`
       countTruck: CountTruck,
       reserves: [Reserve],
       activeReserves: [Reserve],      
+      freezedReserves: [Reserve],      
       userReserves(user:String!): [Reserve],      
       userActiveReserves(user:String!): [Reserve],      
       userHookedReserves(user:String!): [Reserve],     

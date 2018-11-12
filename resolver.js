@@ -77,6 +77,9 @@ const resolvers = {
   activeReserves: async (args) => {
     return (await models.Reserve.find({"status":"active"}))
   },
+  freezedReserves: async (args) => {
+    return (await models.Reserve.find({"status":"freezed"}))
+  },
   userReserves: async (args) => {
     return (await models.Reserve.find({"user": args.user}))
   },
