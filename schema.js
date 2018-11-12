@@ -173,7 +173,7 @@ module.exports = new buildSchema(`
       addUser(first_name: String!, last_name: String!, login: String!, password: String!, post: String!,active: String!): Users!,
       changePassword(login:String!,oldPass: String!,newPass: String!,conPass: String!): PassChange,
       addTrailer(id:String!,state:String!): Trailer!,
-      changeLoc(id:Int!,location:String!): Users!,
+      changePost(login:String!,post:String!): Users!,
       addMember(id:Int!): Member,
       addReserve(trailerid:Int!,lat:String!,lng:String!,truckid:Int!,city:String!,state:String!,user:String!): Reserve,
       addTempTrailer(id:Int!,user:String!): TempTrailer,

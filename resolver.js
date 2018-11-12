@@ -160,10 +160,10 @@ const resolvers = {
     return (await {Curr:now})
   },
   // mutations resolvers
-  changeLoc: async (args) => {
+  changePost: async (args) => {
     return (await models.Users.findOneAndUpdate(
-      {"user.id":args.id},
-      {$set:{"location":args.location}}
+      {"login":args.login},
+      {$set:{"post":args.post}}
     ))
   },
   addUser: async (args) => {
