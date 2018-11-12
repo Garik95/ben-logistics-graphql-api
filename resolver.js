@@ -155,7 +155,10 @@ const resolvers = {
     var newReserve =  models.Reserve.find({"status":"active"}).count();
     return (await {trailer,newTrailer,delTrailer,truck,newTruck,driver,user,reserve,newReserve})
   },
-
+  currentTime: async (args) => {
+    var now = new Date();
+    return (await {Curr:now})
+  },
   // mutations resolvers
   changeLoc: async (args) => {
     return (await models.Users.findOneAndUpdate(
@@ -198,6 +201,7 @@ const resolvers = {
   },
   addReserve: async (args) => {
     let now = new Date();
+    // now = date.addHours(now,-5);
     var newReserve = new models.Reserve({
       _id: ObjectId(),
       trailerid: args.trailerid,

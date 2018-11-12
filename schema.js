@@ -125,6 +125,10 @@ module.exports = new buildSchema(`
       conPass: String
     }
 
+    type CurrTime{
+      Curr:String
+    }
+
     type Query {
       members: [Member],
       member(id:Int!): [Member],
@@ -161,7 +165,8 @@ module.exports = new buildSchema(`
       location(truckid:Int!): [Location],
       locations: [Location],
       temptrailer: [TempTrailer],
-      vehiclecount: Vehiclecount
+      vehiclecount: Vehiclecount,
+      currentTime: CurrTime
     }
 
     type Mutation {
