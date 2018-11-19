@@ -183,6 +183,7 @@ module.exports = new buildSchema(`
       freeReserve(_id:String!,trailerid:Int!,truckid:Int!): Reserve,
       freezeReserve(trailerid:Int!,user:String!): Reserve,
       setTrailerStatus(id:Int!,status:String!): Trailer,
+      setTruckStatus(id:Int!,status:String!): Truck,
       updateToken(service:String!,token:String!): Token
     }
     

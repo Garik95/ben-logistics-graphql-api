@@ -302,6 +302,12 @@ const resolvers = {
       else console.log(res)
     })
   },
+  setTruckStatus: async (args) => {  
+    models.Truck.update({"id":args.id},{$set:{"isAvailable":args.status.toLowerCase()}},{upsert:false,multi:true}, function (err,res) {
+      if(err) console.log(err)
+      else console.log(res)
+    })
+  },
   updateToken: async (args) => {
     models.Token.update({"service":args.service},{$set:{"token":args.token}},{upsert:true}, function(err,res){
       if(err) console.log(err)
